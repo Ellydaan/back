@@ -8,6 +8,7 @@ config :time_manager, TimeManager.Repo,
   database: System.get_env("PGDATABASE"),
   port: System.get_env("PGPORT"),
   stacktrace: true,
+    ssl: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
