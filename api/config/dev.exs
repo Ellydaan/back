@@ -10,7 +10,15 @@ config :time_manager, TimeManager.Repo,
   stacktrace: true,
   ssl: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+ 
+
+# Configurer l'endpoint Phoenix
+config :time_manager, TimeManagerWeb.Endpoint,
+  url: [host: "back-8h8p.onrender.com", port: 443],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: ["//back-8h8p.onrender.com", "//www.yourdomain.com"],
+  server: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
