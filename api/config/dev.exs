@@ -4,14 +4,15 @@ import Config
 config :time_manager, TimeManager.Repo,
   username: System.get_env("PGUSER"),
   password: System.get_env("PGPASSWORD"),
-  hostname: System.get_env("PGHOST"),
+  hostname: "dpg-cse406e8ii6s738sek00-a.oregon-postgres.render.com", # Spécifie le nom d'hôte complet ici
   database: System.get_env("PGDATABASE"),
   port: System.get_env("PGPORT"),
   stacktrace: true,
   ssl: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10,
-  url: System.get_env("DATABASE_URL") <> "?sslmode=require",
+  url: System.get_env("DATABASE_URL") <> "?sslmode=require"
+
  
 
 # Configurer l'endpoint Phoenix
