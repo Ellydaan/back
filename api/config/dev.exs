@@ -11,6 +11,7 @@ config :time_manager, TimeManager.Repo,
   ssl: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10,
+  url: System.get_env("DATABASE_URL") <> "?sslmode=require",
  
 
 # Configurer l'endpoint Phoenix
