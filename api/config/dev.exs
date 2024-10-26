@@ -17,7 +17,7 @@ config :time_manager, TimeManager.Repo,
 config :time_manager, TimeManagerWeb.Endpoint,
   url: [host: "back-8h8p.onrender.com", port: 443],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  check_origin: ["//back-8h8p.onrender.com", "//www.yourdomain.com"],
+  check_origin: ["//back-8h8p.onrender.com", "//www.back-8h8p.onrender.com"],
   server: true
 
 # For development, we disable any cache and enable
@@ -26,14 +26,14 @@ config :time_manager, TimeManagerWeb.Endpoint,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :time_manager, TimeManagerWeb.Endpoint,
-  # Binding to loopback ipv4 address prevents access from other machines.
-  # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {0, 0, 0, 0}, port: 4000],
-  check_origin: false,
-  code_reloader: true,
-  debug_errors: true,
-  secret_key_base: "3ceAZL09T4E0gp5WvQBXUEgNYjEqtnWRk/VxuAzdRqOLpDjYXIWlug2DAPRtw7ja"
+# config :time_manager, TimeManagerWeb.Endpoint,
+#   # Binding to loopback ipv4 address prevents access from other machines.
+#   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
+#   http: [ip: {0, 0, 0, 0}, port: 4000],
+#   check_origin: false,
+#   code_reloader: true,
+#   debug_errors: true,
+#   secret_key_base: "3ceAZL09T4E0gp5WvQBXUEgNYjEqtnWRk/VxuAzdRqOLpDjYXIWlug2DAPRtw7ja"
 
 # ## SSL Support
 #
