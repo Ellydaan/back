@@ -1,27 +1,23 @@
 import Config
-
 # Configure your database
 config :time_manager, TimeManager.Repo,
-  username: System.get_env("PGUSER"),
-  password: System.get_env("PGPASSWORD"),
-  hostname: "dpg-cse406e8ii6s738sek00-a.oregon-postgres.render.com", # Spécifie le nom d'hôte complet ici
-  database: System.get_env("PGDATABASE"),
-  port: System.get_env("PGPORT"),
-  stacktrace: true,
-  ssl: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10,
-  url: System.get_env("DATABASE_URL") <> "?sslmode=require"
-
- 
+  username: System.get_env("PGUSER"),  # Nom d'utilisateur de la base de données
+  password: System.get_env("PGPASSWORD"),  # Mot de passe de la base de données
+  hostname: "dpg-cse406e8ii6s738sek00-a.oregon-postgres.render.com",  # Nom d'hôte complet pour la base de données
+  database: System.get_env("PGDATABASE"),  # Nom de la base de données
+  port: String.to_integer(System.get_env("PGPORT") || "5432"),  # Port (assure-toi que c'est un entier)
+  stacktrace: true,  # Affiche la pile d'appels en cas d'erreur
+  ssl: true,  # Active SSL pour la connexion
+  show_sensitive_data_on_connection_error: true,  # Affiche les données sensibles lors d'erreurs de connexion
+  pool_size: 10,  # Taille du pool de connexions
+  url: System.get_env("DATABASE_URL") <> "?sslmode=require"  # URL de connexion
 
 # Configurer l'endpoint Phoenix
 config :time_manager, TimeManagerWeb.Endpoint,
-  url: [host: "back-8h8p.onrender.com", port: 443],
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  check_origin: ["//back-8h8p.onrender.com"],
-  server: true
-
+  url: [host: "back-8h8p.onrender.com", port: 443],  # URL de l'endpoint
+  cache_static_manifest: "priv/static/cache_manifest.json",  # Manifest pour les fichiers statiques
+  check_origin: ["//back-8h8p.onrender.com"],  # Vérification de l'origine pour les requêtes CORS
+  server: true  # Active le serveur web
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
