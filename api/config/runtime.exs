@@ -65,6 +65,11 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  guardian_secret_key = System.get_env("GUARDIAN_SECRET_KEY")  
+    config :time_manager, TimeManager.Guardian,
+      issuer: "time_manager",
+      secret_key: guardian_secret_key
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key
