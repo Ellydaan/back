@@ -17,7 +17,7 @@ config :time_manager, TimeManager.Repo,
 config :time_manager, TimeManagerWeb.Endpoint,
   url: [host: "back-8h8p.onrender.com", port: 443],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  check_origin: ["//back-8h8p.onrender.com", "//www.back-8h8p.onrender.com"],
+  check_origin: ["//back-8h8p.onrender.com"],
   server: true
 
 # For development, we disable any cache and enable
