@@ -1,6 +1,6 @@
 import Config
 # Configure your database
-onfig :time_manager, TimeManager.Repo,
+config :time_manager, TimeManager.Repo,
   # Supprimez ces configurations individuelles car elles entrent en conflit avec l'URL
   # username: System.get_env("PGUSER"),
   # password: System.get_env("PGPASSWORD"),
