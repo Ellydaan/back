@@ -25,6 +25,10 @@ config :time_manager, TimeManagerWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: false,  # ou configurez selon vos besoins CORS
   server: true
+
+  config :time_manager, TimeManager.Guardian,
+  issuer: "time_manager",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
