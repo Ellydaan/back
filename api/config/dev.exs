@@ -1,23 +1,30 @@
 import Config
 # Configure your database
-config :time_manager, TimeManager.Repo,
-  username: System.get_env("PGUSER"),  # Nom d'utilisateur de la base de données
-  password: System.get_env("PGPASSWORD"),  # Mot de passe de la base de données
-  hostname: "dpg-cse406e8ii6s738sek00-a.oregon-postgres.render.com",  # Nom d'hôte complet pour la base de données
-  database: System.get_env("PGDATABASE"),  # Nom de la base de données
-  port: String.to_integer(System.get_env("PGPORT") || "5432"),  # Port (assure-toi que c'est un entier)
-  stacktrace: true,  # Affiche la pile d'appels en cas d'erreur
-  ssl: true,  # Active SSL pour la connexion
-  show_sensitive_data_on_connection_error: true,  # Affiche les données sensibles lors d'erreurs de connexion
-  pool_size: 10,  # Taille du pool de connexions
-  url: System.get_env("DATABASE_URL") <> "?sslmode=require"  # URL de connexion
+onfig :time_manager, TimeManager.Repo,
+  # Supprimez ces configurations individuelles car elles entrent en conflit avec l'URL
+  # username: System.get_env("PGUSER"),
+  # password: System.get_env("PGPASSWORD"),
+  # hostname: System.get_env("PGHOST"),
+  # database: System.get_env("PGDATABASE"),
+  # port: String.to_integer(System.get_env("PGPORT") || "5432"),
+  
+  # Utilisez uniquement l'URL de connexion
+  url: System.get_env("DATABASE_URL"),
+  ssl: true,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl_opts: [verify: :verify_none]
 
-# Configurer l'endpoint Phoenix
+# Configuration de l'endpoint
 config :time_manager, TimeManagerWeb.Endpoint,
-  url: [host: "back-8h8p.onrender.com", port: 443],  # URL de l'endpoint
-  cache_static_manifest: "priv/static/cache_manifest.json",  # Manifest pour les fichiers statiques
-  check_origin: ["//back-8h8p.onrender.com"],  # Vérification de l'origine pour les requêtes CORS
-  server: true  # Active le serveur web
+  url: [
+    scheme: "https",
+    host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "back-8h8p.onrender.com",
+    port: 443
+  ],
+  http: [port: System.get_env("PORT") || 4000],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: false,  # ou configurez selon vos besoins CORS
+  server: true
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
